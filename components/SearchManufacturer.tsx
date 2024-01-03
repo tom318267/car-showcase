@@ -60,7 +60,26 @@ const SearchManufacturer = ({
                     `}
                   value={item}
                 >
-                  {item}
+                  {({ selected, active }) => (
+                    <>
+                      <span
+                        className={`block truncate ${
+                          selected ? "font-medium" : "font-normal"
+                        }`}
+                      >
+                        {item}
+                      </span>
+
+                      {/* Show an active blue background color if the option is selected */}
+                      {selected ? (
+                        <span
+                          className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
+                            active ? "text-white" : "text-pribg-primary-purple"
+                          }`}
+                        ></span>
+                      ) : null}
+                    </>
+                  )}
                 </Combobox.Option>
               ))}
             </Combobox.Options>
