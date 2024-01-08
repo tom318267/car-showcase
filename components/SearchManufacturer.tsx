@@ -22,9 +22,13 @@ const SearchManufacturer = ({
             .includes(query.toLowerCase().replace(/\s+/g, ""))
         );
 
+  const handleSelect = (value: string) => {
+    setManufacturer(value); // Update the parent's state with the selected manufacturer
+  };
+
   return (
     <div className="search-manufacturer">
-      <Combobox>
+      <Combobox value={manufacturer} onChange={handleSelect}>
         <div className="relative w-full">
           <Combobox.Button className="absolute top-[14px]">
             <Image
@@ -39,7 +43,7 @@ const SearchManufacturer = ({
           <Combobox.Input
             className="search-manufacturer__input"
             placeholder="Volkswagen"
-            displayValue={(manufacturer: string) => manufacturer}
+            displayValue={(item: string) => item}
             onChange={(e) => setQuery(e.target.value)}
           />
 
