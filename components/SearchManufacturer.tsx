@@ -7,8 +7,8 @@ import { Combobox, Transition } from "@headlessui/react";
 import Image from "next/image";
 
 const SearchManufacturer = ({
-  manufacturer,
-  setManufacturer,
+  selected,
+  setSelected,
 }: SearchManufacturerProps) => {
   const [query, setQuery] = useState("");
 
@@ -22,13 +22,9 @@ const SearchManufacturer = ({
             .includes(query.toLowerCase().replace(/\s+/g, ""))
         );
 
-  const handleSelect = (value: string) => {
-    setManufacturer(value); // Update the parent's state with the selected manufacturer
-  };
-
   return (
     <div className="search-manufacturer">
-      <Combobox value={manufacturer} onChange={handleSelect}>
+      <Combobox value={selected} onChange={setSelected}>
         <div className="relative w-full">
           <Combobox.Button className="absolute top-[14px]">
             <Image
